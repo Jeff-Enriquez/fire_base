@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const firebaseCtrl = require('../controllers/firebase');
-/* GET home page. */
-router.get('/', firebaseCtrl.showIndex);
+
+/* GET users listing. */
+router.get('/', firebaseCtrl.showMyAccount);
 
 module.exports = router;
