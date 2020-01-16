@@ -3,14 +3,13 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
+    googleId: String,
     name: {
       type: String,
       required: true,
     },
-    password: {
-      type: String,
-      required: true,
-    },
+    password: String,
+    email: String,
     favorites: [{
       type: Schema.Types.ObjectId,
       ref: 'Video',
