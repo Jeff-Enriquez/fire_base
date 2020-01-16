@@ -7,11 +7,17 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const passport = require('passport')
 
+require('dotenv').config();
+
+const app = express();
+
+require('./config/database');
+require('./config/passport')
+
 const indexRouter = require('./routes/index');
 const browseRouter = require('./routes/browse');
 const myStuffRouter = require('./routes/my-stuff');
 const myAccountRouter = require('./routes/my-account');
-const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
