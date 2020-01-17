@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const myStuffCtrl = require('../controllers/my-stuff');
+const videosCtrl = require('../controllers/videos');
 
 /* GET users listing. */
-router.get('/', myStuffCtrl.show);
+router.get('/', videosCtrl.show);
 
 module.exports = router;

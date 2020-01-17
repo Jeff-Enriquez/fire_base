@@ -18,6 +18,7 @@ const indexRouter = require('./routes/index');
 const browseRouter = require('./routes/browse');
 const myStuffRouter = require('./routes/my-stuff');
 const myAccountRouter = require('./routes/my-account');
+const videosRouter = require('./routes/videos');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -41,6 +42,8 @@ app.use('/', indexRouter);
 app.use('/browse', browseRouter);
 app.use('/my-stuff', myStuffRouter);
 app.use('/my-account', myAccountRouter);
+app.use('/videos', videosRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
