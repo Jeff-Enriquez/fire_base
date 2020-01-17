@@ -9,14 +9,14 @@ passport.use(new GoogleStrategy({
 },
 function(accessToken, refreshToken, profile, cb) {
   User.findOne({ 'googleId': profile.id }, function(err, user) {
-    let photo = "";
-    if(user.photos[0].value){
-      photo = user.photos[0].value;
-    }
     if (err) return cb(err);
     if (user) {
       return cb(null, user);
     } else {
+      let photo = "";
+      if(profile._json.picture){
+        photo = profile._json.picture;
+      }
       // we have a new user via OAuth!
       var newUser = new User({
         name: profile.displayName,
