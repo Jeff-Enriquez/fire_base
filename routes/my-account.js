@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const firebaseCtrl = require('../controllers/firebase');
+const myAccountCtrl = require('../controllers/my-account');
 
 /* GET users listing. */
-router.get('/', firebaseCtrl.showMyAccount);
+router.get('/', myAccountCtrl.show);
 
 module.exports = router;
