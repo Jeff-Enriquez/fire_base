@@ -7,16 +7,21 @@
       <iframe src="https://www.youtube.com/embed/DefL-oJpjo8" frameborder="0" allowfullscreen></iframe>
     </div>
     <div id="comment-section">
-      <div id="add-comment">
-        <img>
-        <input type="text" value="Add a public comment...">
-        <button>COMMENT</button>
+      <h2>Comments</h2>
+      <div class="comment">
+        <img src="<%= user.avatar %>"/>
+        <div>
+          <input type="text" placeholder="Add public comment...">
+          <button>COMMENT</button>
+        </div>
       </div>
-      <!-- <div class="comment">
-        <img>
-        <h3>User Name</h3>
-        <p>This is a users comment</p>
-      </div> -->
+      <div class="comment">
+        <img src="<%=user.avatar%>"/>
+        <div>
+          <h3><%=user.name%></h3>
+          <p>This is a users comment</p>
+        </div>
+      </div>
     </div>
   </div>
 <%- include('../partials/footer') %>

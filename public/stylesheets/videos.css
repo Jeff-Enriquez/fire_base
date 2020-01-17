@@ -1,6 +1,6 @@
-* {
+/* * {
   border: 1px solid red;
-}
+} */
 
 .container {
   width: 80%;
@@ -25,4 +25,49 @@ iframe {
 h1 {
   text-align: left;
   margin: 0;
+}
+
+img {
+  border-radius: 50%;
+  width: 30px;
+}
+
+.comment input {
+  width: 100%;
+  border: none;
+  margin-bottom: 1px;
+  border-bottom: 1px solid rgb(177, 177, 177);
+  outline-color: transparent;
+  outline-style: none;
+}
+
+.comment input:focus {
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+button {
+  float: right;
+  color: white;
+  background-color: #4CAF50;
+  border-radius: 2px;
+}
+
+.comment h3 {
+  margin: 0;
+  padding: 0;
+  font-size: .5em;
+  text-emphasis: bold;
+}
+
+.comment p {
+  margin: 0;
+  padding: 0;
+  font-size: .6em;
+}
+.comment {
+  display: grid;
+  grid-template-columns: 40px auto;
+  grid-template-rows: 100%;
+  margin: 1vh 0;
 }
