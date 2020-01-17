@@ -1,0 +1,14 @@
+</head>
+<body>
+  <nav>
+    <a href="/"><img id="logo" src="/images/fire.png"></a> 
+    <a href="/browse">Browse</a> 
+    <a href="/my-stuff">My Stuff</a> 
+    <i class="material-icons">search</i>
+    <input type="text" value="SEARCH">
+    <% if(user){ %>
+      <a href="/my-account">My Account</a>
+    <% } else { %>
+      <a href="/auth/google">Log In</a>
+    <% } %>
+  </nav>

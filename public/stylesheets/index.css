@@ -1,0 +1,71 @@
+h2{
+  font-size: 1.2em;
+}
+
+.content {
+  margin: 0 2%;
+}
+
+#popular {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+  align-items: stretch;
+}
+.container{
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.topleft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 2vw;
+  width: 100%;
+  margin: 0;
+  padding: 1vw;
+  background-image: linear-gradient(rgb(30, 33, 38, 1),rgb(30, 33, 38, 0));
+  color: white;
+}
+
+.center-right {
+  position: absolute;
+  right: -4%;
+  top: 42%;
+}
+
+.center-left {
+  position: absolute;
+  left: -4%;
+  top: 42%;
+}
+
+.arrow {
+  background-color: rgba(128, 128, 128, 0.342);
+  color: white;
+  border-radius: 12px;
+  font-size: 2vw;
+}
+
+div img:hover {
+    border: 2px solid #777;
+}
+
+div img {
+  width: 100%;
+}
+
+.videos-row {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 100%;
+  align-items: stretch;
+}
+
+@media screen and (min-width: 850px) {
+  .topleft {
+     font-size: 1.2em;
+  }
+}
