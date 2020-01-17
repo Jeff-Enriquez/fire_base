@@ -10,6 +10,7 @@ const userSchema = new Schema(
     },
     password: String,
     email: String,
+    avatar: String,
     favorites: [{
       type: Schema.Types.ObjectId,
       ref: 'Video',

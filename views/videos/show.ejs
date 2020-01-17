@@ -1,4 +1,22 @@
 <%- include('../partials/header') %>
-  <h1>Video Title</h1>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/DefL-oJpjo8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<link rel="stylesheet" href="/stylesheets/videos.css" />
+<%- include('../partials/header2') %>
+  <div class="container">
+    <h1>Video Title</h1>
+    <div id="iframe-container">
+      <iframe src="https://www.youtube.com/embed/DefL-oJpjo8" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div id="comment-section">
+      <div id="add-comment">
+        <img>
+        <input type="text" value="Add a public comment...">
+        <button>COMMENT</button>
+      </div>
+      <!-- <div class="comment">
+        <img>
+        <h3>User Name</h3>
+        <p>This is a users comment</p>
+      </div> -->
+    </div>
+  </div>
 <%- include('../partials/footer') %>
