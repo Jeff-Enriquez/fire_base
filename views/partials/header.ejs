@@ -16,5 +16,9 @@
     <a href="/my-stuff">My Stuff</a> 
     <i class="material-icons">search</i>
     <input type="text" value="SEARCH">
-    <a href="/my-account">My Account</a>
+    <% if(user){ %>
+      <a href="/my-account">My Account</a>
+    <% } else { %>
+      <a href="/auth/google">Log In</a>
+    <% } %>
   </nav>

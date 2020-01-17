@@ -1,5 +1,7 @@
 const showIndex = (req, res) => {
-  res.render('index');
+  res.render('index', {
+    user: req.user
+  });
 }
 
 const showBrowse = (req, res) => {

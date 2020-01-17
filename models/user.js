@@ -21,7 +21,8 @@ const userSchema = new Schema(
     likes: [{
       type: Schema.Types.ObjectId,
       ref: 'Video',
-    }, Boolean],
+      like: Boolean,
+    }],
   },
   {
     timestamps: true,

@@ -4,6 +4,14 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema(
   {
     text: String,
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+    video: {
+      type: Schema.Types.ObjectId,
+      ref: 'Video',
+    },
   },
   {
     timestamps: true,
