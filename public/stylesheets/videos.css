@@ -32,16 +32,19 @@ img {
   width: 30px;
 }
 
-.comment input {
+.comment textarea {
   width: 100%;
   border: none;
+  resize: none;
   margin-bottom: 1px;
   border-bottom: 1px solid rgb(177, 177, 177);
-  outline-color: transparent;
-  outline-style: none;
+  outline: none;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
-.comment input:focus {
+.comment textarea:focus {
   color: black;
   border-bottom: 1px solid black;
 }

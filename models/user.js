@@ -24,6 +24,10 @@ const userSchema = new Schema(
       ref: 'Video',
       like: Boolean,
     }],
+    contributor: {
+      type: Boolean,
+      default: false
+    }
   },
   {
     timestamps: true,
