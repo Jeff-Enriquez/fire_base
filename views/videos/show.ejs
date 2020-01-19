@@ -7,7 +7,7 @@
     <div id="iframe-container">
       <iframe src="https://www.youtube.com/embed/<%=id%>" frameborder="0" allowfullscreen></iframe>
     </div>
-    <div id="comment-section">
+    <div id="comment">
       <h2>Comments</h2>
       <div class="comment">
         <img src="<%= user.avatar %>"/>
@@ -16,13 +16,19 @@
           <button type="submit">COMMENT</button>
         </form>
       </div>
-      <div class="comment">
-        <img src="<%=user.avatar%>"/>
-        <div>
-          <h3><%=user.name%></h3>
-          <p>This is a users comment</p>
+      <% for(const comment of comments) { %>
+        <div class="comment">
+          <% if (comment.user.avatar) { %>
+            <img src="<%= comment.user.avatar %>"/>
+          <% } else { %>
+            <img src="../../public/images/avatar.png"/>
+          <% } %>
+          <div>
+            <h3><%=comment.user.name%></h3>
+            <p><%= comment.text %></p>
+          </div>
         </div>
-      </div>
+      <% } %>
     </div>
   </div>
 <%- include('../partials/footer') %>
