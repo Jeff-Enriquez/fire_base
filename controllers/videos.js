@@ -4,8 +4,8 @@ const show = (req, res) => {
   let id = req.params.id;
   Comment.find({video: id}).populate('user').exec((err, comments) => {
     if(err) return res.redirect(`/videos/${id}`);
-    console.log(comments);
-    console.log(comments[0].user.avatar);
+    // sort comments from most recent to oldest
+    comments.sort((a, b) => b.createdAt - a.createdAt);
     res.render('videos/show', {
       user: req.user,
       comments,
