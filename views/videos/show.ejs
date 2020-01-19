@@ -12,7 +12,7 @@
       <div class="comment">
         <img src="<%= user.avatar %>"/>
         <form action="/videos/<%=id%>/comment/new" method="POST">
-          <textarea rows="1" type="text" placeholder="Add public comment..."></textarea>
+          <textarea rows="1" type="text" placeholder="Add public comment..." name="comment"></textarea>
           <button type="submit">COMMENT</button>
         </form>
       </div>

@@ -9,8 +9,7 @@ const commentSchema = new Schema(
       ref: 'User',
     },
     video: {
-      type: Schema.Types.ObjectId,
-      ref: 'Video',
+      type: String,
     },
   },
   {
