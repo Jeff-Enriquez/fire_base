@@ -21,11 +21,16 @@
           <% if (comment.user.avatar) { %>
             <img src="<%= comment.user.avatar %>"/>
           <% } else { %>
-            <img src="../../public/images/avatar.png"/>
+            <img src="/images/avatar.png"/>
           <% } %>
-          <div>
-            <h3><%=comment.user.name%></h3>
-            <p><%= comment.text %></p>
+          <div class="context">
+            <div>
+              <h3><%=comment.user.name%></h3>
+              <p><%= comment.text %></p>
+            </div>
+            <% if(comment.user._id.equals(user._id)) { %>
+              <img src="/images/dots.png" />
+            <% } %>
           </div>
         </div>
       <% } %>
