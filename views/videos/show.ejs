@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 <link rel="stylesheet" href="/stylesheets/videos.css" />
-<script src="../../public/javascripts/videos.js" defer></script>
+<script src="/javascripts/videos.js" defer></script>
 <%- include('../partials/header2') %>
   <div class="container">
     <h1>Video Title</h1>
@@ -29,7 +29,7 @@
               <p><%= comment.text %></p>
             </div>
             <% if(comment.user._id.equals(user._id)) { %>
-              <img src="/images/dots.png" />
+              <button></button>
             <% } %>
           </div>
         </div>

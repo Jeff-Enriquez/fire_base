@@ -6,8 +6,6 @@ const show = (req, res) => {
     if(err) return res.redirect(`/videos/${id}`);
     // sort comments from most recent to oldest
     comments.sort((a, b) => b.createdAt - a.createdAt);
-    console.log(req.user);
-    console.log(comments);
     res.render('videos/show', {
       user: req.user,
       comments,

@@ -49,7 +49,7 @@ img {
   border-bottom: 1px solid black;
 }
 
-button {
+form button {
   float: right;
   color: white;
   background-color: #4CAF50;
@@ -82,6 +82,12 @@ button {
   grid-template-rows: 100%;
 }
 
-.context img {
-  width: 10px;
+.context button {
+  border: none;
+  height: 13px;
+  margin: 0;
+  padding: 0;
+  background-color: none;
+  background: url("../images/dots.png") no-repeat;
+  background-size: 10px;
 }
