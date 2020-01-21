@@ -10,8 +10,12 @@
     <div id="comment">
       <h2>Comments</h2>
       <div class="comment">
-        <img src="<%= user.avatar %>"/>
-        <form action="/videos/<%=id%>/comment/new" method="POST">
+        <% if (user.avatar) { %>
+          <img src="<%= user.avatar %>"/>
+        <% } else { %>
+          <img src="/images/avatar.png"/>
+        <% } %>
+        <form action="/videos/<%=id%>/comment" method="POST">
           <textarea rows="1" type="text" placeholder="Add public comment..." name="comment"></textarea>
           <button type="submit">COMMENT</button>
         </form>

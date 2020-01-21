@@ -7,17 +7,22 @@ router.get('/', indexCtrl.show);
 
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(
-  'google',
-  { scope: ['profile', 'email'] }
+  'youtube',
+  //{ scope: ['profile', 'email'] }
 ));
 // Google OAuth callback route
-router.get('/oauth2callback', passport.authenticate(
-  'google',
+router.get('/oauth2callback/youtube', test, passport.authenticate(
+  'youtube',
   {
     successRedirect : '/',
     failureRedirect : '/'
   }
 ));
+
+function test (req, res, next) {
+  console.log('hit')
+  return next()
+}
 
  // OAuth logout route
  router.get('/logout', function(req, res){

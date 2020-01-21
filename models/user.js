@@ -3,13 +3,11 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    googleId: String,
+    youtubeId: String,
     name: {
       type: String,
       required: true,
     },
-    password: String,
-    email: String,
     avatar: String,
     favorites: [{
       type: Schema.Types.ObjectId,

@@ -14,6 +14,12 @@ const show = (req, res) => {
   });
 }
 
+const newVid = (req, res) => {
+  res.render('videos/new', {
+    user: req.user
+  });
+}
+
 const newComment = (req, res) => {
   let id = req.params.id;
   let myComment = new Comment({
@@ -49,4 +55,5 @@ module.exports = {
   new: newComment,
   delete: deleteComment,
   update,
+  newVid,
 }
