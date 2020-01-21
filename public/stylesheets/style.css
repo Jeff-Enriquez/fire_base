@@ -6,10 +6,16 @@ body {
   /* background-color: rgb(30, 33, 38); */
 }
 
-a {
-  color: #00B7FF;
+nav a {
+  color: black;
+  font-size: 2em;
+  text-decoration: none;
 }
 
-#logo {
-  width: 15px;
+#nav1 {
+  display: inline-block;
+}
+
+#nav2 {
+  float: right;
 }
