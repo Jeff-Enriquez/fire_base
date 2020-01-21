@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/stylesheets/videos.css" />
 <script src="/javascripts/videos.js" defer></script>
 <%- include('../partials/header2') %>
-  <div class="container">
+  <div class="container" id="<%=id%>">
     <h1>Video Title</h1>
     <div id="iframe-container">
       <iframe src="https://www.youtube.com/embed/<%=id%>" frameborder="0" allowfullscreen></iframe>
@@ -29,7 +29,9 @@
               <p><%= comment.text %></p>
             </div>
             <% if(comment.user._id.equals(user._id)) { %>
-              <button></button>
+              <div class="dot-container" id="<%= comment._id %>">
+                <button class="dots"></button>
+              </div>
             <% } %>
           </div>
         </div>

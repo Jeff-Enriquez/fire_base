@@ -13,6 +13,7 @@ const show = (req, res) => {
     });
   });
 }
+
 const newComment = (req, res) => {
   let id = req.params.id;
   let myComment = new Comment({
@@ -26,7 +27,26 @@ const newComment = (req, res) => {
   });
 }
 
+const deleteComment = (req, res) => {
+  let id = req.params.id;
+  Comment.deleteOne({_id: req.params.commentId}, (err) => {
+    res.redirect(`/videos/${id}`);
+  })
+}
+
+const update = (req, res) => {
+  Comment.findById(req.params.commentId, (err, comment) => {
+    if(err) return res.redirect(`/videos/${req.params.id}`);
+    comment.text = req.body.comment;
+    comment.save(function(err) {
+      res.redirect(`/videos/${req.params.id}`);
+    })
+  })
+}
+
 module.exports = {
   show,
   new: newComment,
+  delete: deleteComment,
+  update,
 }

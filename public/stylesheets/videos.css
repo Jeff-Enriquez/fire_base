@@ -82,12 +82,43 @@ form button {
   grid-template-rows: 100%;
 }
 
-.context button {
+.dot-container {
+  position: relative;
+}
+
+.dot-container div {
+  position: absolute;
+  top: 15px;
+  height: 30px;
+  width: 50px;
+}
+
+h4 {
+  font-size: .7em;
+  display: block;
+  margin: 0;
+  padding: 1px;
+  border: 1px solid grey;
+  cursor: pointer;
+}
+
+.edit {
+  border-bottom: none;
+}
+
+h4:hover {
+  background-color: rgba(152, 152, 152, 0.748);
+}
+
+.dots {
+  position: absolute;
   border: none;
-  height: 13px;
+  height: 15px;
+  width: 10px;
   margin: 0;
   padding: 0;
-  background-color: none;
+  /* background-color: none; */
   background: url("../images/dots.png") no-repeat;
   background-size: 10px;
+  background-position-y: 50%; 
 }
