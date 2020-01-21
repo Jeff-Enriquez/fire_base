@@ -17,8 +17,15 @@ for(let i = 0; i < dotBtns.length; i++){
 		commentIdx = i;
 		commentId = dotContainers[commentIdx].id;
 		renderEditDelete();
+		console.log(dotContainers[commentIdx].id);
 	});
 }
+
+document.querySelector("html").addEventListener("click", function() {
+	if(dotContainers[commentIdx].contains(div)) {
+		dotContainers[commentIdx].removeChild(div);
+	}
+}, true)
 
 h4Edit.addEventListener("click", function() {
 	renderEdit();
@@ -29,7 +36,6 @@ h4Delete.addEventListener("click", function() {
 	myform.setAttribute("method", "post");
 	myform.setAttribute("action", `/videos/${vidId}/comment/${commentId}/?_method=DELETE`);
 	document.body.appendChild(myform);
-	console.log("delete was clicked");
 	myform.submit();
 });
 
@@ -47,10 +53,11 @@ function renderEditDelete(){
 }
 
 function renderEdit(){
-	text = contexts[commentIdx].querySelector("div").querySelector("p").innerText;
-	contexts[commentIdx].remove();
+	text = dotContainers[commentIdx].parentNode.querySelector("div").querySelector("p").innerText;
+	let ele = dotContainers[commentIdx].parentNode.parentNode;
+	dotContainers[commentIdx].parentNode.remove();
 	const myform = createEditForm();
-	comments[commentIdx+1].appendChild(myform);
+	ele.appendChild(myform);
 }
 
 function createEditForm() {
