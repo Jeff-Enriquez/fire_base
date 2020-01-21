@@ -1,4 +1,6 @@
 const Comment = require('../models/comment');
+const Video = require('../models/video');
+const axios = require('axios');
 
 const show = (req, res) => {
   let id = req.params.id;
@@ -15,6 +17,29 @@ const show = (req, res) => {
 }
 
 const newVid = (req, res) => {
+  res.render('videos/new', {
+    user: req.user
+  });
+}
+
+const createVid = (req, res) => {
+  let url = req.body.url.split("/");
+  const URI = url = url[url.length-1];
+  axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${URI}&key=AIzaSyBGbUTSEZDmevFPcfg5Orv_h0KCKflHY40`)
+  .then(function (response) {
+    let myVideo = new Video({
+      uri: URI,
+      title: response.data.items[0].snippet.title
+    });
+    myVideo.save();
+    req.user.uploadedVideos.push(myVideo._id);
+    req.user.save();
+  })
+  .catch(function (error) {
+    res.render('videos/new', {
+      user: req.user
+    });
+  })
   res.render('videos/new', {
     user: req.user
   });
@@ -56,4 +81,5 @@ module.exports = {
   delete: deleteComment,
   update,
   newVid,
+  createVid,
 }

@@ -25,7 +25,11 @@ const userSchema = new Schema(
     contributor: {
       type: Boolean,
       default: false
-    }
+    },
+    uploadedVideos: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Video',
+    }]
   },
   {
     timestamps: true,

@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema(
+const videoSchema = new Schema(
   {
     uri: {
       type: String,
       required: true,
     },
-    upVotes: Number,
-    downVotes: Number,
+    title: String,
     comments: [{
       type: Schema.Types.ObjectId,
       ref: 'Comment',
@@ -19,4 +18,4 @@ const userSchema = new Schema(
   },
 );
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Video', videoSchema);

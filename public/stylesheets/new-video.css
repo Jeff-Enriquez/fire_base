@@ -1,7 +1,10 @@
 img {
   width: 40vw;
 }
+.container {
+  width: 40vw;
+}
 input {
   font-size: 1em;
-  width: 40vw;
+  width: 100%;
 }
