@@ -4,7 +4,14 @@
   <h1>Add Video</h1>
   <div class="container">
     <form action="/videos/new" method="POST">
-      <input placeholder="ex. https://youtu.be/fWpvknKuYrg" name="url">
+      <input placeholder="ex. https://youtu.be/fWpvknKuYrg" name="url" required>
+      <select name="genre" required>
+        <option value="" >Select an option</option>
+        <option value="Sermon">Sermon</option>
+        <option value="Documentary">Documentary</option>
+        <option value="Song">Song</option>
+        <option value="Misc.">Misc.</option>
+      </select>
       <button type="submit">SUBMIT</button>
     </form>
   </div>
