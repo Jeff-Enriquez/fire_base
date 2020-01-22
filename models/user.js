@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    youtubeId: String,
+    googleId: String,
     name: {
       type: String,
       required: true,

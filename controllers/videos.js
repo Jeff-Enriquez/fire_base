@@ -7,14 +7,27 @@ const show = (req, res) => {
   Comment.find({video: req.params.id}).populate('user').exec((err, comments) => {
     if(err) return res.redirect('/');
     // sort comments from most recent to oldest
-    Video.find({uri: req.params.id}, (err, video) => {
+    Video.findOne({uri: req.params.id}, (err, video) => {
       if(err) return res.redirect('/');
       comments.sort((a, b) => b.createdAt - a.createdAt);
-      console.log(video);
+      let vote = "none";
+      let heart = false;
+      if(req.user) {
+        if(req.user.upVotes.includes(video._id)){
+          vote = "up";
+        } else if (req.user.downVotes.includes(video._id)){
+          vote = "down";
+        }
+        if(req.user.hearts.includes(video._id)){
+          heart = true;
+        }
+      }
       res.render('videos/show', {
         user: req.user,
         comments,
-        video: video[0],
+        video: video,
+        vote,
+        heart,
       });
     });
   });
@@ -88,10 +101,13 @@ const update = (req, res) => {
   })
 }
 
-const upVote = (req, res) => {
-  Video.findOne({uri: req.params.id}, (err, video) => {
+const upVote = async (req, res) => {
+  //the await allows the data to be saved
+  //so it will be displayed in the redirect
+  await Video.findOne({uri: req.params.id}, (err, video) => {
+    if(err) return;
     if(req.user.upVotes.includes(video._id)){
-      return res.redirect(`/videos/${req.params.id}`);
+      return;
     } else {
       req.user.upVotes.push(video._id);
       video.upVotes += 1;
