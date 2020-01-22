@@ -9,17 +9,19 @@
     </div>
     <div id="comment">
       <h2>Comments</h2>
-      <div class="comment">
-        <% if (user.avatar) { %>
-          <img src="<%= user.avatar %>"/>
-        <% } else { %>
-          <img src="/images/avatar.png"/>
-        <% } %>
-        <form action="/videos/<%=video.uri%>/comment" method="POST">
-          <textarea rows="1" type="text" placeholder="Add public comment..." name="comment"></textarea>
-          <button type="submit">COMMENT</button>
-        </form>
-      </div>
+      <% if(user) { %>
+        <div class="comment">
+          <% if (user.avatar) { %>
+            <img src="<%= user.avatar %>"/>
+          <% } else { %>
+            <img src="/images/avatar.png"/>
+          <% } %>
+          <form action="/videos/<%=video.uri%>/comment" method="POST">
+            <textarea rows="1" type="text" placeholder="Add public comment..." name="comment"></textarea>
+            <button type="submit">COMMENT</button>
+          </form>
+        </div>
+      <% } %>
       <% for(const comment of comments) { %>
         <div class="comment">
           <% if (comment.user.avatar) { %>
@@ -32,10 +34,12 @@
               <h3><%=comment.user.name%></h3>
               <p><%= comment.text %></p>
             </div>
-            <% if(comment.user._id.equals(user._id)) { %>
-              <div class="dot-container" id="<%= comment._id %>">
-                <button class="dots"></button>
-              </div>
+            <% if(user) { %>
+              <% if(comment.user._id.equals(user._id)) { %>
+                <div class="dot-container" id="<%= comment._id %>">
+                  <button class="dots"></button>
+                </div>
+              <% } %>
             <% } %>
           </div>
         </div>
