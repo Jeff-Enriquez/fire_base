@@ -87,6 +87,11 @@ const update = (req, res) => {
   })
 }
 
+const addVote = (req, res) => {
+  console.log("this is the body: ");
+  console.log(req.body);
+}
+
 module.exports = {
   show,
   new: newComment,
@@ -94,4 +99,5 @@ module.exports = {
   update,
   newVid,
   createVid,
+  addVote,
 }

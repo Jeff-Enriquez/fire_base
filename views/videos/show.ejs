@@ -8,11 +8,27 @@
       <iframe src="https://www.youtube.com/embed/<%=video.uri%>" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="vid-buttons-container">
+      <% if(user) { %>
       <div class="vid-buttons">
-        <img src="/images/thumb-up.png" /><p>621</p>
-        <img src="/images/thumb-down.png" /><p>93</p>
-        <img id="heart" src="/images/heart.png" />
+        <form action="/videos/<%=video.uri%>/up-vote" method="POST">
+          <button type="submit"><img src="/images/thumb-up.png" /></button>
+          <p>621</p>
+        </form>
+        <form action="/videos/<%=video.uri%>/down-vote" method="POST">
+          <button type="submit"><img src="/images/thumb-down.png" /></button>
+          <p>93</p>
+        </form>
+        <form action="/videos/<%=video.uri%>/heart" method="POST">
+          <button type="submit"><img id="heart" src="/images/heart.png" /></button>
+        </form>
       </div>
+      <% } else { %>
+        <div class="vid-buttons">
+          <img src="/images/thumb-up.png" /><p>621</p>
+          <img src="/images/thumb-down.png" /><p>93</p>
+          <img id="heart" src="/images/heart.png" />
+        </div>
+      <% } %>
     </div>
     <div id="comment">
       <h2>Comments</h2>

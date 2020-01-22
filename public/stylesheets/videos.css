@@ -140,6 +140,18 @@ h4:hover {
 }
 
 .vid-buttons img {
-  border-radius: 0%;
-  margin-left: 30px; 
+  border-radius: 0%; 
+}
+
+.vid-buttons button {
+  margin-left: 30px;
+  padding: 0;
+  background-color: none;
+  color: none;
+  border: none;
+  outline: none;
+}
+
+.vid-buttons form {
+  display: inline;
 }

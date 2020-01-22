@@ -11,4 +11,8 @@ router.post('/:id/comment', videosCtrl.new);
 router.put('/:id/comment/:commentId', videosCtrl.update);
 router.delete('/:id/comment/:commentId', videosCtrl.delete);
 
+router.post('/:id/up-vote', videosCtrl.addVote);
+// router.post('/:id/down-vote');
+// router.post('/:id/heart');
+
 module.exports = router;
