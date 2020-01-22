@@ -12,7 +12,7 @@ router.put('/:id/comment/:commentId', videosCtrl.update);
 router.delete('/:id/comment/:commentId', videosCtrl.delete);
 
 router.post('/:id/up-vote', videosCtrl.upVote);
-// router.post('/:id/down-vote');
+router.post('/:id/down-vote', videosCtrl.downVote);
 // router.post('/:id/heart');
 
 module.exports = router;

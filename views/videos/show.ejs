@@ -10,22 +10,22 @@
     <div class="vid-buttons-container">
       <% if(user) { %>
       <div class="vid-buttons">
-        <form action="/videos/<%=video.uri%>/up-vote" method="POST">
-          <% if(vote == "up") { %>
-            <button type="submit"><img src="/images/thumb-up-blue.png" /></button>
-          <% } else { %>
+        <% if(vote == "up") { %>
+          <button disabled><img src="/images/thumb-up-blue.png" /></button>
+        <% } else { %>
+          <form action="/videos/<%=video.uri%>/up-vote" method="POST">
             <button type="submit"><img src="/images/thumb-up.png" /></button>
-          <% } %>
-          <p><%= video.upVotes %></p>
-        </form>
-        <form action="/videos/<%=video.uri%>/down-vote" method="POST">
-          <% if(vote == "down") { %>
-            <button type="submit"><img src="/images/thumb-down-blue.png" /></button>
-          <% } else { %>
+          </form>
+        <% } %>
+        <p><%= video.upVotes %></p>
+        <% if(vote == "down") { %>
+          <button disabled><img src="/images/thumb-down-blue.png" /></button>
+        <% } else { %>
+          <form action="/videos/<%=video.uri%>/down-vote" method="POST">
             <button type="submit"><img src="/images/thumb-down.png" /></button>
-          <% } %>  
-          <p><%= video.downVotes %></p>
-        </form>
+          </form>
+        <% } %>  
+        <p><%= video.downVotes %></p>
         <form action="/videos/<%=video.uri%>/heart" method="POST">
           <% if(heart) { %>
             <button type="submit"><img id="heart" src="/images/heart-red.png" /></button>
@@ -36,9 +36,11 @@
       </div>
       <% } else { %>
         <div class="vid-buttons">
-          <img src="/images/thumb-up.png" /><p>621</p>
-          <img src="/images/thumb-down.png" /><p>93</p>
-          <img id="heart" src="/images/heart.png" />
+          <button disabled><img src="/images/thumb-up.png" /></button>
+          <p><%= video.upVotes %></p>
+          <button disabled><img src="/images/thumb-down.png" /></button>
+          <p><%= video.downVotes %></p>
+          <button disabled><img id="heart" src="/images/heart.png" /></button>
         </div>
       <% } %>
     </div>

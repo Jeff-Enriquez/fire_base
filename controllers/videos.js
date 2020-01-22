@@ -106,14 +106,33 @@ const upVote = async (req, res) => {
   //so it will be displayed in the redirect
   await Video.findOne({uri: req.params.id}, (err, video) => {
     if(err) return;
-    if(req.user.upVotes.includes(video._id)){
-      return;
-    } else {
+    if(req.user.downVotes.includes(video._id)){
+      req.user.downVotes.pull(video._id);
+      video.downVotes -= 1;
+    }
+    if(!req.user.upVotes.includes(video._id)){
       req.user.upVotes.push(video._id);
       video.upVotes += 1;
-      req.user.save();
-      video.save();
     }
+    req.user.save();
+    video.save();
+  })
+  res.redirect(`/videos/${req.params.id}`);
+}
+
+const downVote = async (req, res) => {
+  await Video.findOne({uri: req.params.id}, (err, video) => {
+    if(err) return;
+    if(req.user.upVotes.includes(video._id)){
+      req.user.upVotes.pull(video._id);
+      video.upVotes -= 1;
+    } 
+    if(!req.user.downVotes.includes(video._id)) {
+      req.user.downVotes.push(video._id);
+      video.downVotes += 1;
+    }
+    req.user.save();
+    video.save();
   })
   res.redirect(`/videos/${req.params.id}`);
 }
@@ -126,4 +145,5 @@ module.exports = {
   newVid,
   createVid,
   upVote,
+  downVote,
 }

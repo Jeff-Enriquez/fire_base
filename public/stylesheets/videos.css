@@ -137,6 +137,7 @@ h4:hover {
 .vid-buttons p {
   display: inline;
   margin-left: 5px;
+  font-size: 1.2em;
 }
 
 .vid-buttons img {
