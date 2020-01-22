@@ -17,10 +17,17 @@ const userSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Comment',
     }],
-    likes: [{
+    upVotes: [{
       type: Schema.Types.ObjectId,
       ref: 'Video',
-      like: Boolean,
+    }],
+    downVotes: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Video',
+    }],
+    hearts: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Video',
     }],
     contributor: {
       type: Boolean,

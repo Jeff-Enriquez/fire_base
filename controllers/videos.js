@@ -1,5 +1,6 @@
 const Comment = require('../models/comment');
 const Video = require('../models/video');
+const User = require('../models/user');
 const axios = require('axios');
 
 const show = (req, res) => {
@@ -87,9 +88,18 @@ const update = (req, res) => {
   })
 }
 
-const addVote = (req, res) => {
-  console.log("this is the body: ");
-  console.log(req.body);
+const upVote = (req, res) => {
+  Video.findOne({uri: req.params.id}, (err, video) => {
+    if(req.user.upVotes.includes(video._id)){
+      return res.redirect(`/videos/${req.params.id}`);
+    } else {
+      req.user.upVotes.push(video._id);
+      video.upVotes += 1;
+      req.user.save();
+      video.save();
+    }
+  })
+  res.redirect(`/videos/${req.params.id}`);
 }
 
 module.exports = {
@@ -99,5 +109,5 @@ module.exports = {
   update,
   newVid,
   createVid,
-  addVote,
+  upVote,
 }
