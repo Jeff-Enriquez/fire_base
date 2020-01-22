@@ -49,7 +49,7 @@ img {
   border-bottom: 1px solid black;
 }
 
-form button {
+.submit-comment {
   float: right;
   color: white;
   background-color: #4CAF50;
@@ -59,14 +59,14 @@ form button {
 .comment h3 {
   margin: 0;
   padding: 0;
-  font-size: .7em;
+  font-size: .8em;
   text-emphasis: bold;
 }
 
 .comment p {
   margin: 0;
   padding: 0;
-  font-size: .8em;
+  font-size: .9em;
 }
 
 .comment {
@@ -122,4 +122,24 @@ h4:hover {
   background: url("../images/dots.png") no-repeat;
   background-size: 10px;
   background-position-y: 50%; 
+}
+
+.vid-buttons-container {
+  width: 100%;
+  height: 20px;
+}
+
+.vid-buttons {
+  float: right;
+  margin-top: 10px;
+}
+
+.vid-buttons p {
+  display: inline;
+  margin-left: 5px;
+}
+
+.vid-buttons img {
+  border-radius: 0%;
+  margin-left: 30px; 
 }

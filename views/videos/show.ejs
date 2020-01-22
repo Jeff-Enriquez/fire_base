@@ -7,6 +7,13 @@
     <div id="iframe-container">
       <iframe src="https://www.youtube.com/embed/<%=video.uri%>" frameborder="0" allowfullscreen></iframe>
     </div>
+    <div class="vid-buttons-container">
+      <div class="vid-buttons">
+        <img src="/images/thumb-up.png" /><p>621</p>
+        <img src="/images/thumb-down.png" /><p>93</p>
+        <img id="heart" src="/images/heart.png" />
+      </div>
+    </div>
     <div id="comment">
       <h2>Comments</h2>
       <% if(user) { %>
@@ -18,8 +25,16 @@
           <% } %>
           <form action="/videos/<%=video.uri%>/comment" method="POST">
             <textarea rows="1" type="text" placeholder="Add public comment..." name="comment"></textarea>
-            <button type="submit">COMMENT</button>
+            <button class="submit-comment" type="submit">COMMENT</button>
           </form>
+        </div>
+      <% } else { %>
+        <div class="comment">
+          <img src="/images/avatar.png"/>
+          <div>
+            <textarea rows="1" type="text" placeholder="Log in to add a comment" readonly></textarea>
+            <button class="submit-comment">COMMENT</button>
+          </div>
         </div>
       <% } %>
       <% for(const comment of comments) { %>

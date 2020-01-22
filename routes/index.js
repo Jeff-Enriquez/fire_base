@@ -7,12 +7,12 @@ router.get('/', indexCtrl.show);
 
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(
-  'youtube',
-  //{ scope: ['profile', 'email'] }
+  'google',
+  { scope: ['profile', 'email'] }
 ));
 // Google OAuth callback route
-router.get('/oauth2callback/youtube', test, passport.authenticate(
-  'youtube',
+router.get('/oauth2callback', test, passport.authenticate(
+  'google',
   {
     successRedirect : '/',
     failureRedirect : '/'
@@ -27,6 +27,6 @@ function test (req, res, next) {
  // OAuth logout route
  router.get('/logout', function(req, res){
   req.logout();
-  res.redirect('/students');
+  res.redirect('/');
 });
 module.exports = router;

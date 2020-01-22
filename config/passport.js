@@ -1,25 +1,28 @@
 const passport = require('passport');
-var YoutubeV3Strategy = require('passport-youtube-v3').Strategy
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const User = require('../models/user');
 
-passport.use(new YoutubeV3Strategy({
-  clientID: process.env.YOUTUBE_CLIENT,
-  clientSecret: process.env.YOUTUBE_SECRET,
-  callbackURL: process.env.YOUTUBE_CALLBACK,
-  scope: ['https://www.googleapis.com/auth/youtube.readonly']
+passport.use(new GoogleStrategy({
+  clientID: process.env.GOOGLE_CLIENT_ID,
+  clientSecret: process.env.GOOGLE_SECRET,
+  callbackURL: process.env.GOOGLE_CALLBACK
 },
 function(accessToken, refreshToken, profile, cb) {
-  console.log(profile);
-  User.findOne({ 'youtubeId': profile.id }, function(err, user) {
+  User.findOne({ 'googleId': profile.id }, function(err, user) {
     if (err) return cb(err);
     if (user) {
       return cb(null, user);
     } else {
+      let photo = "";
+      if(profile._json.picture){
+        photo = profile._json.picture;
+      }
       // we have a new user via OAuth!
       var newUser = new User({
         name: profile.displayName,
-        youtubeId: profile.id,
-        avatar: null,
+        email: profile.emails[0].value,
+        googleId: profile.id,
+        avatar: photo,
       });
       newUser.save(function(err) {
         if (err) return cb(err);
