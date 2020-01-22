@@ -1,6 +1,17 @@
+const Video = require('../models/video');
+
 const show = (req, res) => {
-  res.render('index', {
-    user: req.user
+  Video.find({}, (err, videos) => {
+    if(err) {
+      res.render('index', {
+        user: req.user,
+        videos: [],
+      })
+    }
+    res.render('index', {
+      user: req.user,
+      videos,
+    });
   });
 }
 

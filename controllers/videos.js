@@ -3,15 +3,18 @@ const Video = require('../models/video');
 const axios = require('axios');
 
 const show = (req, res) => {
-  let id = req.params.id;
-  Comment.find({video: id}).populate('user').exec((err, comments) => {
-    if(err) return res.redirect(`/videos/${id}`);
+  Comment.find({video: req.params.id}).populate('user').exec((err, comments) => {
+    if(err) return res.redirect('/');
     // sort comments from most recent to oldest
-    comments.sort((a, b) => b.createdAt - a.createdAt);
-    res.render('videos/show', {
-      user: req.user,
-      comments,
-      id,
+    Video.find({uri: req.params.id}, (err, video) => {
+      if(err) return res.redirect('/');
+      comments.sort((a, b) => b.createdAt - a.createdAt);
+      console.log(video);
+      res.render('videos/show', {
+        user: req.user,
+        comments,
+        video: video[0],
+      });
     });
   });
 }

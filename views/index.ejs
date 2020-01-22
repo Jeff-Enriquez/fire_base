@@ -5,48 +5,51 @@
   <div class="content">
     <h2>Popular ></h2>
     <div id="popular">
-      <a href="/videos/DefL-oJpjo8">
+      <a href="/videos/<%=videos[0].uri%>">
         <div class="container">
           <div class="img-p-container">
-            <img src="http://img.youtube.com/vi/DefL-oJpjo8/0.jpg" />
-            <p class="topleft">Top Left</p>
+            <img src="http://img.youtube.com/vi/<%=videos[0].uri%>/0.jpg" />
+            <p class="topleft"><%=videos[0].title%></p>
           </div>
         </div>
       </a>
-      <div class="container">
-        <div class="img-p-container">
-          <img src="http://img.youtube.com/vi/x72ew_O3fsE/0.jpg" />
-          <p class="topleft">Top Left</p>
+      <a href="/videos/<%=videos[1].uri%>">
+        <div class="container">
+          <div class="img-p-container">
+            <img src="http://img.youtube.com/vi/<%=videos[1].uri%>/0.jpg" />
+            <p class="topleft"><%=videos[1].title%></p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
     <div class="videos-row">
-      <div class="container">
-        <div class="img-p-container">
-          <button class="center-left arrow"><</button>
-          <img src="http://img.youtube.com/vi/wGgsmCEgf4w/0.jpg" />
-          <p class="topleft">Top Left</p>
+      <a href="/videos/<%=videos[2].uri%>">
+        <div class="container">
+          <div class="img-p-container">
+            <button class="center-left arrow"><</button>
+            <img src="http://img.youtube.com/vi/<%=videos[2].uri%>/0.jpg" />
+            <p class="topleft"><%=videos[2].title%></p>
+          </div>
         </div>
-      </div>
-      <div class="container">
-        <div class="img-p-container">
-          <img src="http://img.youtube.com/vi/S09o1LhYW2g/0.jpg" />
-          <p class="topleft">Top Left</p>
+      </a>
+      <% for(let i = 3; i < videos.length-1; i++) { %>
+      <a href="/videos/<%=videos[i].uri%>">
+        <div class="container">
+          <div class="img-p-container">
+            <img src="http://img.youtube.com/vi/<%=videos[i].uri%>/0.jpg" />
+            <p class="topleft"><%=videos[i].title%></p>
+          </div>
         </div>
-      </div>
-      <div class="container">
-        <div class="img-p-container">
-          <img src="http://img.youtube.com/vi/LRCCGQj2KTU/0.jpg" />
-          <p class="topleft">Top Left</p>
+      <% } %>
+      <a href="/videos/<%=videos[videos.length-1].uri%>">
+        <div class="container">
+          <div class="img-p-container">
+            <img src="http://img.youtube.com/vi/<%=videos[videos.length-1].uri%>/0.jpg" />
+            <p class="topleft"><%=videos[videos.length-1].title%></p>
+            <button class="center-right arrow">></button>
+          </div>
         </div>
-      </div>
-      <div class="container">
-        <div class="img-p-container">
-          <img src="http://img.youtube.com/vi/VH3f0ellNv8/0.jpg" />
-          <p class="topleft">Top Left</p>
-          <button class="center-right arrow">></button>
-        </div>
-      </div>
+      </a>
     </div>
   </div>
 <%- include('partials/footer') %>
