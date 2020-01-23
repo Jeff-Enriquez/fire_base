@@ -17,7 +17,6 @@ for(let i = 0; i < dotBtns.length; i++){
 		commentIdx = i;
 		commentId = dotContainers[commentIdx].id;
 		renderEditDelete();
-		console.log(dotContainers[commentIdx].id);
 	});
 }
 

@@ -18,9 +18,7 @@ const show = (req, res) => {
         comments[comment.video.uri].text.push(comment.text);
       }
     });
-    console.log(comments);
   }).catch(function(err){
-    console.log(err);
   }).finally(function(){
     res.render('my-stuff/show', {
       user: req.user,

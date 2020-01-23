@@ -1,4 +1,3 @@
-console.log("this is my javascript file")
 const containers = document.querySelectorAll(".container");
 const content = document.querySelector(".content");
 const imgs = content.querySelectorAll("img");
