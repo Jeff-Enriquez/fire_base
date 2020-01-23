@@ -32,5 +32,19 @@
       </div>
     </div>
   <% }) %>
+  <h3>My Comments ></h3>
+  <% for(const property in comments){ %>
+    <div class="container">
+      <div class="grid-container">
+        <a href="/videos/<%=property%>"><img src="http://img.youtube.com/vi/<%=property%>/0.jpg" /></a>
+        <p><%=comments[property].title%></p>
+        <button class="dots"></button>
+      </div>
+    </div>
+    <p>MY COMMENTS:</p>
+    <% comments[property].text.forEach(comment => { %>
+      <p><%=comment%></p>
+    <% }) %>
+  <% } %>
 </main>
 <%- include('../partials/footer') %>

@@ -3,7 +3,7 @@ const Video = require('../models/video');
 const axios = require('axios');
 
 const show = (req, res) => {
-  Comment.find({video: req.params.id}).populate('user').exec((err, comments) => {
+  Comment.find({"video.uri": req.params.id}).populate('user').exec((err, comments) => {
     if(err) return res.redirect('/');
     // sort comments from most recent to oldest
     Video.findOne({uri: req.params.id}, (err, video) => {
@@ -74,15 +74,21 @@ const createVid = async (req, res) => {
 
 const newComment = (req, res) => {
   let id = req.params.id;
-  let myComment = new Comment({
-    text: req.body.comment,
-    user: req.user._id,
-    video: id,
-  });
-  myComment.save();
-  req.user.comments.push(myComment._id);
-  req.user.save(function(err) {
-    res.redirect(`/videos/${id}`);
+  Video.findOne({uri: id}, (err, video) => {
+    if(err) return res.redirect(`/videos/${id}`);
+    let myComment = new Comment({
+      text: req.body.comment,
+      user: req.user._id,
+      video: {
+        uri: video.uri,
+        title: video.title
+      }
+    });
+    myComment.save();
+    req.user.comments.push(myComment._id);
+    req.user.save(function(err) {
+      res.redirect(`/videos/${id}`);
+    });
   });
 }
 
@@ -106,7 +112,7 @@ const update = (req, res) => {
 const upVote = async (req, res) => {
   //the await allows the data to be saved
   //so it will be displayed in the redirect
-  await Video.findOne({uri: req.params.id}, (err, video) => {
+   await Video.findOne({uri: req.params.id}, (err, video) => {
     if(err) return;
     if(req.user.downVotes.includes(video._id)){
       req.user.downVotes.pull(video._id);

@@ -9,7 +9,8 @@ const commentSchema = new Schema(
       ref: 'User',
     },
     video: {
-      type: String,
+      uri: String,
+      title: String
     },
   },
   {
