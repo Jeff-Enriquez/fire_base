@@ -6,7 +6,7 @@
   <% hearts.forEach(heart => { %>
     <div class="container">
       <div class="grid-container">
-        <a href="/videos/<%=heart.uri%>"><img src="http://img.youtube.com/vi/<%=heart.uri%>/0.jpg" /></a>
+        <a href="/videos/<%=heart.uri%>"><img src="https://img.youtube.com/vi/<%=heart.uri%>/0.jpg" /></a>
         <p><%=heart.title%></p>
         <button class="dots" id="<%= heart._id %>"></button>
       </div>
@@ -16,7 +16,7 @@
   <% upVotes.forEach(vote => { %>
     <div class="container">
       <div class="grid-container">
-        <a href="/videos/<%=vote.uri%>"><img src="http://img.youtube.com/vi/<%=vote.uri%>/0.jpg" /></a>
+        <a href="/videos/<%=vote.uri%>"><img src="https://img.youtube.com/vi/<%=vote.uri%>/0.jpg" /></a>
         <p><%=vote.title%></p>
         <button class="dots" id="<%= vote._id %>"></button>
       </div>
@@ -26,7 +26,7 @@
   <% downVotes.forEach(vote => { %>
     <div class="container">
       <div class="grid-container">
-        <a href="/videos/<%=vote.uri%>"><img src="http://img.youtube.com/vi/<%=vote.uri%>/0.jpg" /></a>
+        <a href="/videos/<%=vote.uri%>"><img src="https://img.youtube.com/vi/<%=vote.uri%>/0.jpg" /></a>
         <p><%=vote.title%></p>
         <button class="dots" id="<%= vote._id %>"></button>
       </div>
@@ -36,7 +36,7 @@
   <% for(const property in comments){ %>
     <div class="container">
       <div class="grid-container">
-        <a href="/videos/<%=property%>"><img src="http://img.youtube.com/vi/<%=property%>/0.jpg" /></a>
+        <a href="/videos/<%=property%>"><img src="https://img.youtube.com/vi/<%=property%>/0.jpg" /></a>
         <p><%=comments[property].title%></p>
         <button class="dots"></button>
       </div>
