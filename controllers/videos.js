@@ -80,6 +80,7 @@ const newComment = (req, res) => {
     video: id,
   });
   myComment.save();
+  req.user.comments.push(myComment._id);
   req.user.save(function(err) {
     res.redirect(`/videos/${id}`);
   });

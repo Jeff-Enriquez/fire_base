@@ -1,8 +1,36 @@
 <%- include('../partials/header') %>
+<link rel="stylesheet" href="/stylesheets/my-stuff.css" />
 <%- include('../partials/header2') %>
-<h1>My Stuff</h1>
-<h3>My Favorites ></h3>
-<% videos.forEach(video => { %>
-  <img src="http://img.youtube.com/vi/<%=video.uri%>/0.jpg" />
-<% }) %>
+<main>
+  <h3>My Favorites ></h3>
+  <% hearts.forEach(heart => { %>
+    <div class="container">
+      <div class="grid-container">
+        <a href="/videos/<%=heart.uri%>"><img src="http://img.youtube.com/vi/<%=heart.uri%>/0.jpg" /></a>
+        <p><%=heart.title%></p>
+        <button class="dots" id="<%= heart._id %>"></button>
+      </div>
+    </div>
+  <% }) %>
+  <h3>My Likes ></h3>
+  <% upVotes.forEach(vote => { %>
+    <div class="container">
+      <div class="grid-container">
+        <a href="/videos/<%=vote.uri%>"><img src="http://img.youtube.com/vi/<%=vote.uri%>/0.jpg" /></a>
+        <p><%=vote.title%></p>
+        <button class="dots" id="<%= vote._id %>"></button>
+      </div>
+    </div>
+  <% }) %>
+  <h3>My Dislikes ></h3>
+  <% downVotes.forEach(vote => { %>
+    <div class="container">
+      <div class="grid-container">
+        <a href="/videos/<%=vote.uri%>"><img src="http://img.youtube.com/vi/<%=vote.uri%>/0.jpg" /></a>
+        <p><%=vote.title%></p>
+        <button class="dots" id="<%= vote._id %>"></button>
+      </div>
+    </div>
+  <% }) %>
+</main>
 <%- include('../partials/footer') %>

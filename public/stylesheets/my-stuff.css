@@ -1,0 +1,38 @@
+main {
+  margin: 0 2%;
+}
+
+.dots {
+  border: none;
+  height: 15px;
+  width: 10px;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  background-repeat: none;
+  background: url("../images/dots.png") no-repeat;
+  background-size: 10px;
+  background-position-y: 50%; 
+}
+
+.container {
+  width: 90vw;
+  border-top: 1.5px solid rgba(128, 128, 128, 0.247);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 80px auto 10px;
+  grid-template-rows: 100%;
+  margin-bottom: 5px;
+}
+
+.container img {
+  width: 100%;
+}
+
+.container p {
+  padding: 0;
+  margin: 0;
+  padding-left: 5px; 
+}
