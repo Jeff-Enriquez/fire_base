@@ -143,8 +143,7 @@ const heart = async (req, res) => {
     if(err) return;
     if(req.user.hearts.includes(video._id)){
       req.user.hearts.pull(video._id);
-    } 
-    if(!req.user.hearts.includes(video._id)) {
+    } else if(!req.user.hearts.includes(video._id)) {
       req.user.hearts.push(video._id);
     }
     req.user.save();

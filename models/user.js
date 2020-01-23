@@ -9,10 +9,6 @@ const userSchema = new Schema(
       required: true,
     },
     avatar: String,
-    favorites: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Video',
-    }],
     comments: [{
       type: Schema.Types.ObjectId,
       ref: 'Comment',
