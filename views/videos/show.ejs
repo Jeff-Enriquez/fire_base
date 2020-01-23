@@ -28,7 +28,7 @@
         <p><%= video.downVotes %></p>
         <form action="/videos/<%=video.uri%>/heart" method="POST">
           <% if(heart) { %>
-            <button type="submit"><img id="heart" src="/images/heart-red.png" /></button>
+            <button type="submit"><img id="heart" src="/images/red-heart.png" /></button>
           <% } else { %>
             <button type="submit"><img id="heart" src="/images/heart.png" /></button>
           <% } %>

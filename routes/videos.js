@@ -13,6 +13,6 @@ router.delete('/:id/comment/:commentId', videosCtrl.delete);
 
 router.post('/:id/up-vote', videosCtrl.upVote);
 router.post('/:id/down-vote', videosCtrl.downVote);
-// router.post('/:id/heart');
+router.post('/:id/heart', videosCtrl.heart);
 
 module.exports = router;

@@ -1,6 +1,5 @@
 const Comment = require('../models/comment');
 const Video = require('../models/video');
-const User = require('../models/user');
 const axios = require('axios');
 
 const show = (req, res) => {
@@ -39,33 +38,35 @@ const newVid = (req, res) => {
   });
 }
 
-const createVid = (req, res) => {
-  let url = req.body.url.split("/");
-  const URI = url[url.length-1];
-  Video.findOne({uri: URI}, function(err, video){
-    if(video){
-      res.render('videos/new', {
-        user: req.user
-      });
-    } else {
-      axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${URI}&key=AIzaSyBGbUTSEZDmevFPcfg5Orv_h0KCKflHY40`)
-      .then(function (response) {
-        let myVideo = new Video({
-          uri: URI,
-          title: response.data.items[0].snippet.title,
-          genre: req.body.genre,
-        });
-        myVideo.save();
-        req.user.uploadedVideos.push(myVideo._id);
-        req.user.save();
-      })
-      .catch(function (error) {
+const createVid = async (req, res) => {
+  if(req.user.contributor){
+    let url = req.body.url.split("/");
+    const URI = url[url.length-1];
+    await Video.findOne({uri: URI}, function(err, video){
+      if(video){
         res.render('videos/new', {
           user: req.user
         });
-      })
-    }
-  });
+      } else {
+        axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${URI}&key=AIzaSyBGbUTSEZDmevFPcfg5Orv_h0KCKflHY40`)
+        .then(function (response) {
+          let myVideo = new Video({
+            uri: URI,
+            title: response.data.items[0].snippet.title,
+            genre: req.body.genre,
+          });
+          myVideo.save();
+          req.user.uploadedVideos.push(myVideo._id);
+          req.user.save();
+        })
+        .catch(function (error) {
+          res.render('videos/new', {
+            user: req.user
+          });
+        })
+      }
+    });
+  }
   res.render('videos/new', {
     user: req.user
   });
@@ -137,6 +138,20 @@ const downVote = async (req, res) => {
   res.redirect(`/videos/${req.params.id}`);
 }
 
+const heart = async (req, res) => {
+  await Video.findOne({uri: req.params.id}, (err, video) => {
+    if(err) return;
+    if(req.user.hearts.includes(video._id)){
+      req.user.hearts.pull(video._id);
+    } 
+    if(!req.user.hearts.includes(video._id)) {
+      req.user.hearts.push(video._id);
+    }
+    req.user.save();
+  })
+  res.redirect(`/videos/${req.params.id}`);
+}
+
 module.exports = {
   show,
   new: newComment,
@@ -146,4 +161,5 @@ module.exports = {
   createVid,
   upVote,
   downVote,
+  heart,
 }
