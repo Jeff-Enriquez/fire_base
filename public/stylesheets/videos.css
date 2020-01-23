@@ -151,7 +151,7 @@ h4:hover {
 .vid-buttons button {
   margin-left: 30px;
   padding: 0;
-  background-color: none;
+  background: none;
   color: none;
   border: none;
   outline: none;
