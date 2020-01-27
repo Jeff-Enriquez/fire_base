@@ -1,5 +1,5 @@
 # Fire Base
-Open [Here]()
+Open [Here](https://christian-fire-base.herokuapp.com/)
 This is a site for Christian videos. These videos can be 'Songs', 'Sermons', 'Documentaries', and 'Misc.'
 Users can like and comment on the videos. Only approved users can add content. Browsing capabilites will be added to search content.
 

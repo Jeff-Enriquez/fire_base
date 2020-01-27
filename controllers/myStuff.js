@@ -20,7 +20,7 @@ const show = (req, res) => {
     });
   }).catch(function(err){
   }).finally(function(){
-    res.render('my-stuff/show', {
+    res.render('myStuff/show', {
       user: req.user,
       hearts: req.user.hearts,
       upVotes: req.user.upVotes,

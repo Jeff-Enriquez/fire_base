@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const myStuffCtrl = require('../controllers/my-stuff');
+const myStuffCtrl = require('../controllers/myStuff');
 
 /* GET users listing. */
 router.get('/', myStuffCtrl.show);

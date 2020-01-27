@@ -16,8 +16,8 @@ require('./config/passport')
 
 const indexRouter = require('./routes/index');
 const browseRouter = require('./routes/browse');
-const myStuffRouter = require('./routes/my-stuff');
-const myAccountRouter = require('./routes/my-account');
+const myStuffRouter = require('./routes/myStuff');
+const myAccountRouter = require('./routes/myAccount');
 const videosRouter = require('./routes/videos');
 
 // view engine setup
@@ -40,8 +40,8 @@ app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/browse', browseRouter);
-app.use('/my-stuff', myStuffRouter);
-app.use('/my-account', myAccountRouter);
+app.use('/myStuff', myStuffRouter);
+app.use('/myAccount', myAccountRouter);
 app.use('/videos', videosRouter);
 
 

@@ -1,5 +1,5 @@
 const show = (req, res) => {
-  res.render('my-account/show', {
+  res.render('myAccount/show', {
     user: req.user
   });
 }
